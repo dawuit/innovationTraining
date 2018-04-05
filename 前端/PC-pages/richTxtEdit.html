@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑推送文章</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading" style="height: 35px;">
+        <b>编辑推送文章</b>
+        <a class="pull-right" href="released.html"><span class="glyphicon glyphicon-share-alt"></span>返回上一级</a>
+    </div>
+    <div class="panel-body" style="padding: 0px;">
+        <!-- 加载编辑器的容器 -->
+        <form action="" method="post">
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" type="text/plain">这里编辑推送内容</script>
+            <div style="margin:10px;">
+                <input class="btn btn-default btn-sm" type="submit" name="" value="保存" style="margin-right: 40px;">
+                <input class="btn btn-success btn-sm" type="submit" name="" value="&nbsp;&nbsp;保存并发布&nbsp;&nbsp;">
+            </div>
+        </form>
+    </div>
+</div>
+<!-- 配置文件 -->
+<script type="text/javascript" src="utf8-jsp/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="utf8-jsp/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        autoHeightEnabled: false,
+        initialFrameHeight: 500
+    });
+</script>
+</body>
+</html>

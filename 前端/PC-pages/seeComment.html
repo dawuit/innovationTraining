@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>查看评论</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <style>tr:hover{background: #f4f4f4}</style>
+</head>
+<script>
+    $(function () {
+        //单项删除
+        $(".clear").click(function () {
+            var $t = $(this);
+            $("#delete-modal").modal('show');
+            $("#delete").click(function () {
+                $("#delete-modal").modal('hide');
+                $t.parent("td").parent("tr").remove();
+            });
+        });
+    })
+</script>
+<body>
+<!--清空评论确认模态框-->
+<div class="modal" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">
+              &times;
+              </span>
+                </button>
+                <h4>是否清空</h4>
+            </div>
+            <div class="modal-body">
+                清空后将无法恢复，确认清空？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="delete">清空</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading" style="overflow: hidden">
+        <span style="float: left;line-height: 34px;margin-right: 20px">评论筛选：</span>
+        <div style="float: left;margin-right: 20px">
+            <select class="form-control">
+                <option value="">请选择活动</option>
+                <option>这是活动1</option>
+                <option>这是活动2</option>
+                <option>这是活动3</option>
+            </select>
+        </div>
+        <div style="float: left;margin-right: 20px">
+            <select class="form-control">
+                <option value="">请选择时间段</option>
+                <option>这是时间段1</option>
+                <option>这是时间段2</option>
+                <option>这是时间段3</option>
+            </select>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table" style="margin-bottom: 0">
+            <tr class="active">
+                <th>
+                    活动标题
+                </th>
+                <th>
+                    总评论数
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+            <tr>
+                <td>图书馆义工活动</td>
+                <td>100</td>
+                <td>
+                    <a href="comment.html">查看评论</a> /
+                    <a href="#" class="clear">清空</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

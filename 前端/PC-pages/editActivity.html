@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>编辑活动</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        function maxtext() {
+            var x = $(".introduction").find("textarea").val().length;
+            $(".word-restriction span").html(x);
+            if (x < 500) {
+                $(".word-restriction").css("color", "#9999CC");
+            }
+            else {
+                $(".word-restriction").css("color", "#FF0000");
+            }
+
+        }
+        ;
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                language: 'zh-CN',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            });
+            //设置默认打开为今天
+            $(".form_datetime").datetimepicker("setStartDate", new Date());
+            //设置开始时间与结束时间的约束
+            $("#enter-start-time").change(function () {
+                var startDate = $("#enter-start-time").find(".form-control").val();
+                $("#enter-end-time").datetimepicker("setStartDate", startDate);
+                $("#activity-start-time").datetimepicker("setStartDate", startDate);
+                $("#activity-end-time").datetimepicker("setStartDate", startDate);
+            });
+            $("#enter-end-time").change(function () {
+                $("#enter-start-time").datetimepicker("setEndDate", $("#enter-end-time").find(".form-control").val());
+            });
+            $("#activity-start-time").change(function () {
+                $("#activity-end-time").datetimepicker("setStartDate", $("activity-start-time").find(".form-control").val());
+            });
+            $("#activity-end-time").change(function () {
+                $("#activity-start-time").datetimepicker("setEndDate", $("activity-end-time").find(".form-control").val());
+            });
+            $("input[type='submit']").click(function () {
+
+            });
+
+            //textarea支持tab缩进
+            $("textarea").on(
+                'keydown',
+                function (e) {
+                    if (e.keyCode == 9) {
+                        e.preventDefault();
+                        var indent = '    ';
+                        var start = this.selectionStart;
+                        var end = this.selectionEnd;
+                        var selected = window.getSelection().toString();
+                        selected = indent + selected.replace(/\n/g, '\n' + indent);
+                        this.value = this.value.substring(0, start) + selected
+                            + this.value.substring(end);
+                        this.setSelectionRange(start + indent.length, start
+                            + selected.length);
+                    }
+                });
+        });
+    </script>
+    <style type="text/css">
+        label {
+            font-size: 16px;
+        }
+
+        input {
+            margin-top: 5px;
+        }
+
+        .must:before {
+            content: "*";
+            color: red;
+            height: 20px;
+            line-height: 20px;
+            font-size: 15px;
+        }
+
+        .introduction {
+            margin-left: 13px;
+            padding: 8px 0px 22px 12px;
+            position: relative;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .introduction textarea {
+            width: 97%;
+            min-height: 62px;
+            padding: 8px;
+            color: #555;
+            resize: none;
+            line-height: 18px;
+            border: 0px;
+        }
+
+        .introduction textarea:focus {
+            outline: none;
+        }
+
+        .word-restriction {
+            position: absolute;
+            bottom: 0px;
+            font-size: 12px;
+            right: 5px;
+            bottom: 5px;
+            color: #9999CC;
+        }
+    </style>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">编辑活动</h4>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-10" style="padding-top: 20px;">
+            <form class="form-horizontal" id="myFrom" action="">
+                <div class="form-group ">
+                    <label for="nickname" class="col-md-2 control-label must">标题：</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="nickname" placeholder="请输入活动标题" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label ">活动简介：</label>
+                    <div class="col-md-8 introduction">
+                        <textarea rows="8" placeholder="简要概述活动内容" maxlength="500" oninput="maxtext()"></textarea>
+                        <div class="word-restriction">
+                            <span>0</span>/500
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">报名起始时间：</label>
+                    <div class="col-md-8">
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="yyyy MM dd - p HH:ii " data-link-field="enter-start-time"
+                             id="enter-start-time">
+                            <input class="form-control" size="16" type="text" value="" required="required" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">报名结束时间：</label>
+                    <div class="col-md-8">
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="yyyy MM dd - p HH:ii " data-link-field="enter-end-time"
+                             id="enter-end-time">
+                            <input class="form-control" size="16" type="text" value="" required="required" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <input type="hidden" value=""/>
+                        <br/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">活动起始时间：</label>
+                    <div class="col-md-8">
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="yyyy MM dd - p HH:ii " data-link-field="activity-start-time"
+                             id="activity-start-time">
+                            <input class="form-control" size="16" type="text" value="" required="required" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <input type="hidden" id="activity-start-time" value=""/>
+                        <br/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">活动结束时间：</label>
+                    <div class="col-md-8">
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="yyyy MM dd - p HH:ii " data-link-field="activity-end-time"
+                             id="activity-end-time">
+                            <input class="form-control time" size="16" type="text" value="" required="required"
+                                   readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"
+                                                                  id="enter-end-time"></span></span>
+                        </div>
+                        <input type="hidden" value=""/>
+                        <br/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">费用：</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="cost" placeholder="请输入活动费用">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label must">地点：</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="place" placeholder="请输入活动地点">
+                    </div>
+                </div>
+                <div class="row col-md-4 col-md-offset-2" style="padding-top:30px;">
+                    <div class="col-md-6 text-center">
+                        <input class="btn btn-success" type="submit" value="保存">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href="activityMng.html"><input class="btn btn-danger" type="button" value="取消"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

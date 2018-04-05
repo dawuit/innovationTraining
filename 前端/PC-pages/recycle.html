@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>回收站</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <link href="css/skins/all.css?v=1.0.2" rel="stylesheet">
+    <script src="js/icheck.js?v=1.0.2"></script>
+    <style type="text/css">
+
+        .essay a {
+            padding: 0px;
+            margin: 0px;
+        }
+        .essay-title {
+            margin-left: 20px;
+        }
+
+        .deadline {
+            color: #9B9B9B;
+            font-family: Arial;
+        }
+        tr:hover{background: #f4f4f4}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal',
+                increaseArea: '20%'
+            });
+            $('#all-check').on('ifClicked', function (event) {
+                if ($("#all-check").is(":checked")) {
+                    $("input[name='checkbox']").iCheck('uncheck');
+                }
+                else {
+                    $("input[name='checkbox']").iCheck('check');
+                }
+            });
+            //选择全部复选框后，全选按钮打钩
+            $("input[name='checkbox']").on('ifChanged', function (event) {
+                //统计被选中的个数
+                var checklen = $("input[name='checkbox']:checkbox:checked").length;
+                //统计总个数
+                var checkboxlen = $("input[name='checkbox']:checkbox").length;
+                if (checklen == checkboxlen) {
+                    $("#all-check").iCheck('check');
+                }
+                else {
+                    $("#all-check").iCheck('Uncheck');
+                }
+            });
+            //批量删除
+            $("#essay-delete").click(function () {
+                if($("input:checked").length == 0){
+                    alert("请先勾选要删除的文章");
+                }else{
+                    $("#delete-modal").modal('show');
+                    $("#delete").click(function () {
+                        $("#delete-modal").modal('hide');
+                        $("input:checked").parent().parent().parent().remove();
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div role="tabpanel" class="tab-pane" id="recycle">
+    <table class="table table-hover">
+        <colgroup>
+            <col class="col-md-6">
+            <col class="col-md-3">
+        </colgroup>
+        <tr>
+            <th colspan="2">
+                <label for="all-check" style="margin-right: 20px;"><input type="checkbox" name="all-check"
+                                                                          id="all-check" style="margin-right: 10px;">全选</label>
+                <a class="btn btn-primary btn-sm" style="margin-right: 10px;">还原</a>
+                <a class="btn btn-primary btn-sm" id="essay-delete">删除</a>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="checkbox"><a class="essay-title" href="">已删除文章1</a>
+            </td>
+            <td>
+                <span class="deadline">2017年6月13日到期</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="checkbox"><a class="essay-title" href="">已删除文章2</a>
+            </td>
+            <td>
+                <span class="deadline">2017年6月13日到期</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="checkbox"><a class="essay-title" href="">已删除文章3</a>
+            </td>
+            <td>
+                <span class="deadline">2017年6月13日到期</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="checkbox"><a class="essay-title" href="">已删除文章4</a>
+            </td>
+            <td>
+                <span class="deadline">2017年6月13日到期</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="checkbox"><a class="essay-title" href="">已删除文章5</a>
+            </td>
+            <td>
+                <span class="deadline">2017年6月13日到期</span>
+            </td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--删除确认模态框-->
+<div class="modal" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">
+              &times;
+              </span>
+                </button>
+                <h4>是否删除</h4>
+            </div>
+            <div class="modal-body">
+                删除后将无法恢复，确认删除？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="delete">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

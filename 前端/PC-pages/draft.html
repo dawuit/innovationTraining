@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>草稿箱</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <link href="css/skins/all.css?v=1.0.2" rel="stylesheet">
+    <script src="js/icheck.js?v=1.0.2"></script>
+    <script>
+        $(document).ready(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal',
+                increaseArea: '20%'
+            });
+        });
+    </script>
+    <style type="text/css">
+        .essay a {
+            padding: 0px;
+            margin: 0px;
+        }
+        tr:hover{background: #f4f4f4}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#all-check").click(function () {
+                var ischeck = $(this).is(':checked');
+                $("input[name='essay-check']").prop("checked", $(this).is(':checked'));
+            });
+            //选择全部复选框后，全选按钮打钩
+            $("input[name='essay-check']").click(function () {
+                //统计被选中的个数
+                var checklen = $("input[name='essay-check']:checkbox:checked").length;
+                //统计总个数
+                var checkboxlen = $("input[name='essay-check']:checkbox").length;
+                $("#all-check").prop("checked", checklen == checkboxlen);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="tab-pane" id="drafts">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="overflow: hidden">
+            <a class="btn btn-primary" href="richTxtEdit.html"><span
+                    class="glyphicon glyphicon-pencil"> 新建推送文稿 </span></a>
+            <div style="width: 40%;float: right;display: table">
+            <span class="input-group-addon">
+                <a href="#" style="text-decoration: none">查询草稿 <span class="glyphicon glyphicon-search"></span></a>
+            </span>
+                <input type="text" class="form-control" placeholder="输入文章标题查询">
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table" style="margin-bottom: 0">
+                <tr>
+                    <th>文章标题</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td><a href="#">这是草稿标题这是草稿标题</a></td>
+                    <td>2017.07.07</td>
+                    <td>
+                        <a class="edit">编辑</a> /
+                        <a class="release">发布</a> /
+                        <a class="delete">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">这是草稿标题这是草稿标题</a></td>
+                    <td>2017.07.07</td>
+                    <td>
+                        <a class="edit">编辑</a> /
+                        <a class="release">发布</a> /
+                        <a class="delete">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">这是草稿标题这是草稿标题</a></td>
+                    <td>2017.07.07</td>
+                    <td>
+                        <a class="edit">编辑</a> /
+                        <a class="release">发布</a> /
+                        <a class="delete">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">这是草稿标题这是草稿标题</a></td>
+                    <td>2017.07.07</td>
+                    <td>
+                        <a class="edit">编辑</a> /
+                        <a class="release">发布</a> /
+                        <a class="delete">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">这是草稿标题这是草稿标题</a></td>
+                    <td>2017.07.07</td>
+                    <td>
+                        <a class="edit">编辑</a> /
+                        <a class="release">发布</a> /
+                        <a class="delete">删除</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

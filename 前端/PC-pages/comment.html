@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>活动评论</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .comment {
+            padding-left: 0;
+        }
+
+        .comment li {
+            position: relative;
+            list-style: none;
+        }
+
+        .comment-heading {
+            font-size: 16px;
+            color: #4d555d;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .comment-body {
+            height: auto !important;
+            height: 80px;
+            min-height: 80px;
+            margin-top: 3px;
+            font-size: 14px;
+            line-height: 24px;
+            color: #303538;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .comment-footer {
+            color: #93999f;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        .glyphicon-trash{cursor: pointer;color: #38f}
+        li{border-top: 1px solid #eee;padding: 25px 0 ;}
+        li:hover{
+            background: #f4f4f4;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            //单项删除
+            $(".glyphicon-trash").click(function () {
+                var $t = $(this);
+                $("#delete-modal").modal('show');
+                $("#delete").click(function () {
+                    $("#delete-modal").modal('hide');
+                $t.parent().parent().remove();
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<!--删除确认模态框-->
+<div class="modal" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">
+              &times;
+              </span>
+                </button>
+                <h4>是否删除</h4>
+            </div>
+            <div class="modal-body">
+                删除后将无法恢复，确认删除？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="delete">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            活动评论
+            <a href="seeComment.html" style="float: right;text-decoration: none">
+                返回 <span class="glyphicon glyphicon-repeat"></span>
+            </a>
+        </h4>
+    </div>
+    <div class="panel-body">
+        <ul class="comment">
+            <li class="row">
+                <div class="col-xs-2 text-center">
+                    <img src="images/touxiang.jpg" class="img-circle" width="80" height="80">
+                </div>
+                <div class="col-xs-9">
+                    <div>
+                        <div class="comment-heading">
+                            飞翔的企鹅
+                        </div>
+                        <div class="comment-body">
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                        </div>
+                    </div>
+                    <div class="comment-footer">
+                        时间：2017-6-1
+                    </div>
+                </div>
+                <div class="comment-deal " style="position: absolute; top:15%;right: 5%;">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-xs-2 text-center">
+                    <img src="images/touxiang.jpg" class="img-circle" width="80" height="80">
+                </div>
+                <div class="col-xs-9">
+                    <div>
+                        <div class="comment-heading">
+                            飞翔的企鹅
+                        </div>
+                        <div class="comment-body">
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                        </div>
+                    </div>
+                    <div class="comment-footer">
+                        时间：2017-6-1
+                    </div>
+                </div>
+                <div class="comment-deal " style="position: absolute; top:15%;right: 5%;">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-xs-2 text-center">
+                    <img src="images/touxiang.jpg" class="img-circle" width="80" height="80">
+                </div>
+                <div class="col-xs-9">
+                    <div>
+                        <div class="comment-heading">
+                            飞翔的企鹅
+                        </div>
+                        <div class="comment-body">
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                            这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
+                        </div>
+                    </div>
+                    <div class="comment-footer">
+                        时间：2017-6-1
+                    </div>
+                </div>
+                <div class="comment-deal " style="position: absolute; top:15%;right: 5%;">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
